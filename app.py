@@ -13,30 +13,32 @@ with open("scaler.pkl", "rb") as f:
 st.title("Loan Approval Prediction Using ANN")
 
 # Input fields
-Gender = st.selectbox("Gender", ["Male", "Female"])
-Married = st.selectbox("Married", ["Yes", "No"])
-Education = st.selectbox("Education", ["Graduate", "Not Graduate"])
-Self_Employed = st.selectbox("Self Employed", ["Yes", "No"])
-ApplicantIncome = st.number_input("Applicant Income", min_value=0)
-CoapplicantIncome = st.number_input("Coapplicant Income", min_value=0)
-LoanAmount = st.number_input("Loan Amount (in thousands)", min_value=0)
-Loan_Amount_Term = st.number_input("Loan Amount Term", min_value=0)
-Credit_History = st.selectbox("Credit History", [1.0, 0.0])
-Property_Area = st.selectbox("Property Area", ["Urban", "Semiurban", "Rural"])
+no_of_dependents = st.number_input("Number of Dependents", min_value=0)
+education = st.selectbox("Education", ["Graduate", "Not Graduate"])
+self_employed = st.selectbox("Self Employed", ["Yes", "No"])
+income_annum = st.number_input("Annual Income (₹)", min_value=0)
+loan_amount = st.number_input("Loan Amount (₹)", min_value=0)
+loan_term = st.number_input("Loan Term (in months)", min_value=0)
+cibil_score = st.number_input("CIBIL Score", min_value=300, max_value=900)
+residential_assets_value = st.number_input("Residential Assets Value", min_value=0)
+commercial_assets_value = st.number_input("Commercial Assets Value", min_value=0)
+luxury_assets_value = st.number_input("Luxury Assets Value", min_value=0)
+bank_asset_value = st.number_input("Bank Asset Value", min_value=0)
 
 # Convert inputs to DataFrame
 data = {
-    'ApplicantIncome': ApplicantIncome,
-    'CoapplicantIncome': CoapplicantIncome,
-    'LoanAmount': LoanAmount,
-    'Loan_Amount_Term': Loan_Amount_Term,
-    'Credit_History': Credit_History,
-    'Gender_Male': 1 if Gender == "Male" else 0,
-    'Married_Yes': 1 if Married == "Yes" else 0,
-    'Education_Not Graduate': 1 if Education == "Not Graduate" else 0,
-    'Self_Employed_Yes': 1 if Self_Employed == "Yes" else 0,
-    'Property_Area_Semiurban': 1 if Property_Area == "Semiurban" else 0,
-    'Property_Area_Urban': 1 if Property_Area == "Urban" else 0
+    'no_of_dependents': no_of_dependents,
+    'education': education,
+    'self_employed': self_employed,
+    'income_annum': income_annum,
+    'loan_amount': loan_amount,
+    'loan_term ' : loan_term,
+    'cibil_score': cibil_score,
+    'residential_assets_value': residential_assets_value,
+    'commercial_assets_value': commercial_assets_value,
+    'luxury_assets_value': luxury_assets_value,
+    'bank_asset_value': bank_asset_value
+    
 }
 input_df = pd.DataFrame([data])
 
